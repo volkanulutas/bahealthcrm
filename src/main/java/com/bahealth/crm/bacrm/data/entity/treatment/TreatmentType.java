@@ -7,5 +7,5 @@ public enum TreatmentType {
     ORTHOPEDICS,
     OBESITY_SURGERY,
     PLASTIC_AND_AESTHETIC_SURGERY,
-    CHECK_UP;
+    CHECK_UP
 }

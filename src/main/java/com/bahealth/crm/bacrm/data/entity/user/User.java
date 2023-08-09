@@ -1,25 +1,22 @@
-package com.bahealth.crm.bacrm.data.entity.treatment;
+package com.bahealth.crm.bacrm.data.entity.user;
 
-import com.bahealth.crm.bacrm.data.entity.Patient;
-import com.bahealth.crm.bacrm.data.entity.work.Work;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,27 +27,36 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "TREATMENT")
-public class Treatment {
+@Table(name = "USERS")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
     @Column
+    private String email;
+
+    @Column
+    @JsonIgnore
+    private String password;
+
+    @Column
     private String name;
 
     @Column
-    @Enumerated(EnumType.STRING)
-    private TreatmentType type;
+    private String middleName;
 
     @Column
-    private Long date;
+    private String surname;
 
-    @ManyToMany(mappedBy = "treatments")
-    private Set<Patient> patients = new HashSet<>();
+    @Column
+    private boolean enabled;
 
-    @OneToMany(mappedBy = "treatment", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @ToString.Exclude
-    private Set<Work> treatments = new HashSet<>();
+    @Column
+    private String profilePicture;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLES", joinColumns = {@JoinColumn(name = "USER_ID")}, inverseJoinColumns = {@JoinColumn(name = "ROLE_ID")})
+    private Set<Role> roles = new HashSet<>();
 }

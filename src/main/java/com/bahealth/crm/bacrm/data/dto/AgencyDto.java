@@ -5,9 +5,7 @@ import com.bahealth.crm.bacrm.data.entity.helper.TelephoneNumber;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Data

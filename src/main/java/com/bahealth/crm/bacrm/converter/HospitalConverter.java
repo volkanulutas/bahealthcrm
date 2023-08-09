@@ -2,7 +2,6 @@ package com.bahealth.crm.bacrm.converter;
 
 import com.bahealth.crm.bacrm.data.dto.TelephoneNumberDto;
 import com.bahealth.crm.bacrm.data.entity.helper.TelephoneNumber;
-import org.springframework.stereotype.Component;
 
 public class HospitalConverter {
     public TelephoneNumber toEntity(TelephoneNumberDto source) {

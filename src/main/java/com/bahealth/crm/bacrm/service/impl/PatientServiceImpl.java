@@ -1,8 +1,9 @@
-package com.bahealth.crm.bacrm.service;
+package com.bahealth.crm.bacrm.service.impl;
 
 import com.bahealth.crm.bacrm.data.dto.PatientDto;
 import com.bahealth.crm.bacrm.data.exception.ResourceNotFoundException;
 import com.bahealth.crm.bacrm.data.exception.ValidationException;
+import com.bahealth.crm.bacrm.service.PatientService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 

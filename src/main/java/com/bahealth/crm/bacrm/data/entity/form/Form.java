@@ -12,6 +12,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -29,14 +31,17 @@ import java.util.Set;
 @Table(name = "FORM")
 public class Form {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, orphanRemoval = true)
-    @ToString.Exclude private Set<FormMessage> ongoingMessages = new HashSet<>();
+    @ToString.Exclude
+    private Set<FormMessage> ongoingMessages = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, orphanRemoval = true)
-    @ToString.Exclude private Set<FormMessage> incomingMessages = new HashSet<>();
+    @ToString.Exclude
+    private Set<FormMessage> incomingMessages = new HashSet<>();
 
     @OneToOne
     @JoinColumn(name = "patient_id", referencedColumnName = "id")

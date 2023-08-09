@@ -1,7 +1,6 @@
 package com.bahealth.crm.bacrm.data.dto;
 
 import com.bahealth.crm.bacrm.data.entity.treatment.TreatmentType;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import java.io.Serializable;

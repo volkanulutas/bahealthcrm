@@ -8,15 +8,11 @@ import com.bahealth.crm.bacrm.data.entity.Patient;
 import com.bahealth.crm.bacrm.data.entity.helper.Address;
 import com.bahealth.crm.bacrm.data.entity.helper.TelephoneNumber;
 import com.bahealth.crm.bacrm.data.entity.treatment.Treatment;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PatientConverter {
-
     public static Patient toEntity(PatientDto source) {
         Patient target = new Patient();
         target.setId(source.getId());

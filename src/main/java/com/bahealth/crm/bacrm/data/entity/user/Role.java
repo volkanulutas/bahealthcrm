@@ -1,4 +1,4 @@
-package com.bahealth.crm.bacrm.data.entity.advert;
+package com.bahealth.crm.bacrm.data.entity.user;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name = "ADVERT")
-public class Advert {
+@Table(name = "ROLE")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
@@ -30,14 +30,8 @@ public class Advert {
     private String name;
 
     @Column
-    private Long fee;
+    private String description;
 
     @Column
-    private Long planningDate;
-
-    @Column
-    private Long startDate;
-
-    @Column
-    private Long endDate;
+    private Long creationDate;
 }
