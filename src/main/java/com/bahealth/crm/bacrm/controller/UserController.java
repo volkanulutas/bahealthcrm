@@ -37,7 +37,7 @@ public class UserController {
     ////@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public UserDto getOne(@PathVariable(value = "id") Long id) {
-        return userService.find(id);
+        return userService.get(id);
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)

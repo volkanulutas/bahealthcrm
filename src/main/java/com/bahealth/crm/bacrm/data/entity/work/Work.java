@@ -2,6 +2,7 @@ package com.bahealth.crm.bacrm.data.entity.work;
 
 import com.bahealth.crm.bacrm.data.entity.treatment.Treatment;
 import com.bahealth.crm.bacrm.data.entity.user.Role;
+import com.bahealth.crm.bacrm.data.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -53,5 +54,9 @@ public class Work {
     @ManyToOne
     @JoinColumn(name = "treatment_id")
     private Treatment treatment;
+
+    @ManyToMany
+    @JoinTable(name = "work_assignedUsers", joinColumns = @JoinColumn(name = "work_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<User> assignedUsers = new HashSet<>();
 
 }

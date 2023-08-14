@@ -38,13 +38,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserDto find(Long id) throws ResourceNotFoundException {
+    public UserDto get(Long id) throws ResourceNotFoundException {
         Optional<User> optUser = userRepository.findById(id);
         if (optUser.isPresent()) {
             return UserConverter.toDto(optUser.get());
-        } else {
-            throw new ResourceNotFoundException("User", "User is not found!");
         }
+        throw new ResourceNotFoundException("User", "User is not found with id: " + id);
+    }
+
+    @Override
+    public boolean isPresent(Long id) {
+        Optional<User> optUser = userRepository.findById(id);
+        if (optUser.isPresent()) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -72,6 +80,5 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return authorities;
         //return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
-
 
 }
